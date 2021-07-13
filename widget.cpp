@@ -9,7 +9,6 @@ Widget::Widget(QWidget *parent)
     resize(Window);
     setMinimumSize(Window);
     setMaximumSize(Window);
-    MainBox = new QHBoxLayout;
     ui->setupUi(this);
 }
 

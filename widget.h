@@ -20,7 +20,6 @@ private:
     QSize Window = QSize(800,600);
     std::string InputString;
     std::string OutputString;
-    QHBoxLayout* MainBox;
     Ui::Widget *ui;
 };
 #endif // WIDGET_H
