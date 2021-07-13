@@ -2,6 +2,7 @@
 #define WIDGET_H
 
 #include <QWidget>
+#include <QtWidgets>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class Widget; }
@@ -16,6 +17,10 @@ public:
     ~Widget();
 
 private:
+    QSize Window = QSize(800,600);
+    std::string InputString;
+    std::string OutputString;
+    QHBoxLayout* MainBox;
     Ui::Widget *ui;
 };
 #endif // WIDGET_H
