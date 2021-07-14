@@ -20,6 +20,12 @@ private:
     QSize Window = QSize(800,600);
     std::string InputString;
     std::string OutputString;
+    QVBoxLayout* MainLayout = new QVBoxLayout();
+    QHBoxLayout* SecondaryLayout = new QHBoxLayout();
+    QLabel* InputLineLabel = new QLabel("Input text");
+    QLineEdit* InputLine = new QLineEdit();
+    QLineEdit* OutputLine = new QLineEdit();
+    QPushButton* OkButton = new QPushButton("Ok");
     Ui::Widget *ui;
 };
 #endif // WIDGET_H
