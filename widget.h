@@ -21,10 +21,17 @@ private:
     std::string InputString;
     std::string OutputString;
     QVBoxLayout* MainLayout = new QVBoxLayout();
+    QVBoxLayout* LeftInputTextLayuot = new QVBoxLayout();
+    QVBoxLayout* RightInputTextLayout = new QVBoxLayout();
+
+    QHBoxLayout* LabelLayout = new QHBoxLayout();
     QHBoxLayout* SecondaryLayout = new QHBoxLayout();
-    QLabel* InputLineLabel = new QLabel("Input text");
-    QLineEdit* InputLine = new QLineEdit();
-    QLineEdit* OutputLine = new QLineEdit();
+    QLabel* OutputTextLabel = new QLabel("&Output");
+    QLabel* InputTextLabel = new QLabel("&Input");
+    QLabel* KeyLineLabel = new QLabel("&Key");
+    QLineEdit* KeyLine = new QLineEdit();
+    QTextEdit* InputText = new QTextEdit();
+    QTextEdit* OutputText = new QTextEdit();
     QPushButton* OkButton = new QPushButton("Ok");
     Ui::Widget *ui;
 };

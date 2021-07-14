@@ -9,14 +9,31 @@ Widget::Widget(QWidget *parent)
     resize(Window);
     setMinimumSize(Window);
     setMaximumSize(Window);
-    InputLine->setFixedHeight(100);
-    OutputLine->setBaseSize(200,100);
-    OutputLine->setReadOnly(true);
-    InputLineLabel->setBuddy(InputLine);
-    SecondaryLayout->addWidget(InputLine);
-    MainLayout->addWidget(InputLineLabel);
-    SecondaryLayout->addWidget(OutputLine);
+    InputText->setFixedHeight(200);
+    OutputText->setFixedHeight(200);
+    InputText->setStyleSheet("QTextEdit { border: 2px solid gray; border-radius: 7px; }");
+    OutputText->setStyleSheet("QTextEdit { border: 2px solid gray; border-radius: 7px; }");
+    OutputText->setReadOnly(true);
+    KeyLine->setStyleSheet("QLineEdit { border: 2px solid gray; border-radius: 7px; }");
+    //Labels
+    InputTextLabel->setBuddy(InputText);
+    OutputTextLabel->setBuddy(OutputText);
+    KeyLineLabel->setBuddy(KeyLine);
+    //
+    //SecondaryLayout->addWidget(InputTextLabel);
+    LeftInputTextLayuot->addWidget(InputTextLabel);
+    LeftInputTextLayuot->addWidget(InputText);
+    LeftInputTextLayuot->addStretch(1);
+    RightInputTextLayout->addWidget(OutputTextLabel);
+    RightInputTextLayout->addWidget(OutputText);
+    RightInputTextLayout->addStretch(1);
+    SecondaryLayout->addLayout(LeftInputTextLayuot);
+    SecondaryLayout->addLayout(RightInputTextLayout);
     MainLayout->addLayout(SecondaryLayout);
+    MainLayout->addStretch(2);
+    MainLayout->addWidget(KeyLineLabel);
+    MainLayout->addWidget(KeyLine);
+    MainLayout->addStretch(1);
     MainLayout->addWidget(OkButton);
     this->setLayout(MainLayout);
     ui->setupUi(this);
