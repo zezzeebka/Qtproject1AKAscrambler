@@ -15,15 +15,13 @@ class Widget : public QWidget
 public:
     Widget(QWidget *parent = nullptr);
     ~Widget();
-
 private:
     QSize Window = QSize(800,600);
-    std::string InputString;
-    std::string OutputString;
+    QString InputString;
+    QString OutputString;
     QVBoxLayout* MainLayout = new QVBoxLayout();
     QVBoxLayout* LeftInputTextLayuot = new QVBoxLayout();
     QVBoxLayout* RightInputTextLayout = new QVBoxLayout();
-
     QHBoxLayout* LabelLayout = new QHBoxLayout();
     QHBoxLayout* SecondaryLayout = new QHBoxLayout();
     QLabel* OutputTextLabel = new QLabel("&Output");
@@ -34,5 +32,7 @@ private:
     QTextEdit* OutputText = new QTextEdit();
     QPushButton* OkButton = new QPushButton("Ok");
     Ui::Widget *ui;
+private slots:
+    void TakeText();
 };
 #endif // WIDGET_H

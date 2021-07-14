@@ -1,7 +1,7 @@
 #include "widget.h"
 #include "./ui_widget.h"
-
-
+#include <iostream>
+#include <QChar>
 Widget::Widget(QWidget *parent)
     : QWidget(parent)
     , ui(new Ui::Widget)
@@ -14,7 +14,7 @@ Widget::Widget(QWidget *parent)
     InputText->setStyleSheet("QTextEdit { border: 2px solid gray; border-radius: 7px; }");
     OutputText->setStyleSheet("QTextEdit { border: 2px solid gray; border-radius: 7px; }");
     OutputText->setReadOnly(true);
-    KeyLine->setStyleSheet("QLineEdit { border: 2px solid gray; border-radius: 7px; }");
+    KeyLine->setStyleSheet("QTextEdit { border: 2px solid gray; border-radius: 7px; }");
     //Labels
     InputTextLabel->setBuddy(InputText);
     OutputTextLabel->setBuddy(OutputText);
@@ -36,11 +36,21 @@ Widget::Widget(QWidget *parent)
     MainLayout->addStretch(1);
     MainLayout->addWidget(OkButton);
     this->setLayout(MainLayout);
+    connect(OkButton, SIGNAL(clicked()), this, SLOT(TakeText()));
     ui->setupUi(this);
+
 }
 
 Widget::~Widget()
 {
     delete ui;
+}
+void Widget::TakeText()
+{
+    InputString = InputText->toPlainText();
+    for(QChar a : InputString)
+    {
+
+    }
 }
 
