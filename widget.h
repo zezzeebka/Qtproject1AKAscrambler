@@ -18,6 +18,8 @@ public:
 private:
     QSize Window = QSize(800,600);
     QString InputString;
+    QString lowerAlphabet = "abcdefghijklmnopqrstuvwxyz";
+    QString KeyString;
     QString OutputString;
     QVBoxLayout* MainLayout = new QVBoxLayout();
     QVBoxLayout* LeftInputTextLayuot = new QVBoxLayout();
@@ -34,5 +36,6 @@ private:
     Ui::Widget *ui;
 private slots:
     void TakeText();
+
 };
 #endif // WIDGET_H

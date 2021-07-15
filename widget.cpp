@@ -47,10 +47,23 @@ Widget::~Widget()
 }
 void Widget::TakeText()
 {
-    InputString = InputText->toPlainText();
-    for(QChar a : InputString)
+    if(InputText->toPlainText().isEmpty() == 0)
     {
-
+        OutputString.clear();
+        OutputText->clear();
+        InputString = InputText->toPlainText();
+        KeyString = KeyLine->text();
+        int test;
+        QChar test1;
+        for(int i = 0; i<InputString.length(); i++)
+        {
+            test = InputString[i].unicode() + KeyString[i % KeyString.length()].unicode() -64;
+            if(test>90)
+            {test -= 26;}
+            test1 = QChar(test);
+            OutputString.append(test1);
+        }
+        OutputText->setText(OutputString);
     }
 }
 
