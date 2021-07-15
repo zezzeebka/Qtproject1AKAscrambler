@@ -35,8 +35,10 @@ Widget::Widget(QWidget *parent)
     MainLayout->addWidget(KeyLine);
     MainLayout->addStretch(1);
     MainLayout->addWidget(OkButton);
+    MainLayout->addWidget(UnencryptButton);
     this->setLayout(MainLayout);
-    connect(OkButton, SIGNAL(clicked()), this, SLOT(TakeText()));
+    connect(OkButton, SIGNAL(clicked()), this, SLOT(Encrypt()));
+    connect(UnencryptButton, SIGNAL(clicked()), this, SLOT(Unencrypt()));
     ui->setupUi(this);
 
 }
@@ -45,9 +47,17 @@ Widget::~Widget()
 {
     delete ui;
 }
-void Widget::TakeText()
+void Widget::Encrypt()
 {
-    if(InputText->toPlainText().isEmpty() == 0)
+    EncryptionText(0);
+}
+void Widget::Unencrypt()
+{
+    EncryptionText(1);
+}
+void Widget::EncryptionText(bool Type)
+{
+    if(InputText->toPlainText().isEmpty() == 0 && KeyLine->text().isEmpty() == 0)
     {
         OutputString.clear();
         OutputText->clear();
@@ -57,9 +67,18 @@ void Widget::TakeText()
         QChar test1;
         for(int i = 0; i<InputString.length(); i++)
         {
-            test = InputString[i].unicode() + KeyString[i % KeyString.length()].unicode() -64;
-            if(test>90)
-            {test -= 26;}
+            if(Type == false)
+            {
+                test = InputString[i].unicode() + KeyString[i % KeyString.length()].unicode() -64;
+                if(test>90)
+                {test -= 26;}
+            }
+            else
+            {
+                test = InputString[i].unicode() - KeyString[i % KeyString.length()].unicode() +64;
+                if(test<65)
+                {test += 26;}
+            }
             test1 = QChar(test);
             OutputString.append(test1);
         }

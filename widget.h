@@ -18,7 +18,6 @@ public:
 private:
     QSize Window = QSize(800,600);
     QString InputString;
-    QString lowerAlphabet = "abcdefghijklmnopqrstuvwxyz";
     QString KeyString;
     QString OutputString;
     QVBoxLayout* MainLayout = new QVBoxLayout();
@@ -32,10 +31,12 @@ private:
     QLineEdit* KeyLine = new QLineEdit();
     QTextEdit* InputText = new QTextEdit();
     QTextEdit* OutputText = new QTextEdit();
-    QPushButton* OkButton = new QPushButton("Ok");
+    QPushButton* OkButton = new QPushButton("&Encrypt");
+    QPushButton* UnencryptButton = new QPushButton("&Unencrypt");
     Ui::Widget *ui;
 private slots:
-    void TakeText();
-
+    void EncryptionText(bool Type);
+    void Encrypt();
+    void Unencrypt();
 };
 #endif // WIDGET_H
