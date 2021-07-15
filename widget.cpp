@@ -63,24 +63,22 @@ void Widget::EncryptionText(bool Type)
         OutputText->clear();
         InputString = InputText->toPlainText();
         KeyString = KeyLine->text();
-        int test;
-        QChar test1;
+        int UnicodeNumber;
         for(int i = 0; i<InputString.length(); i++)
         {
             if(Type == false)
             {
-                test = InputString[i].unicode() + KeyString[i % KeyString.length()].unicode() -64;
-                if(test>90)
-                {test -= 26;}
+                    UnicodeNumber = InputString[i].unicode() + KeyString[i % KeyString.length()].unicode()-31;
+                if(UnicodeNumber>90)
+                {UnicodeNumber -= 59;}
             }
             else
             {
-                test = InputString[i].unicode() - KeyString[i % KeyString.length()].unicode() +64;
-                if(test<65)
-                {test += 26;}
+                UnicodeNumber = InputString[i].unicode() - KeyString[i % KeyString.length()].unicode()+31;
+                if(UnicodeNumber<32)
+                {UnicodeNumber += 59;}
             }
-            test1 = QChar(test);
-            OutputString.append(test1);
+            OutputString.append(QChar(UnicodeNumber));
         }
         OutputText->setText(OutputString);
     }

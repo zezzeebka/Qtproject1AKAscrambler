@@ -15,6 +15,7 @@ class Widget : public QWidget
 public:
     Widget(QWidget *parent = nullptr);
     ~Widget();
+    void EncryptionText(bool Type);
 private:
     QSize Window = QSize(800,600);
     QString InputString;
@@ -35,7 +36,6 @@ private:
     QPushButton* UnencryptButton = new QPushButton("&Unencrypt");
     Ui::Widget *ui;
 private slots:
-    void EncryptionText(bool Type);
     void Encrypt();
     void Unencrypt();
 };
